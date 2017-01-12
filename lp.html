@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ManageSystem</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<link rel="stylesheet" href="css/jquery.dataTables.min.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<script type="text/javascript" src="js/jquery-2.2.1.js"></script>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/file-saverjs.js"></script>
+	<script type="text/javascript" src="js/tableexport.js"></script>
+	<style type="text/css">
+		#wrapper {margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 0px;
+		}
+		#header {height: 50px; border-bottom: 1px solid gray; box-shadow:
+			rgba(0,0,4,5) 0px 1px 2px 0px; background: #DDDDDD; letter-spacing: 10px;
+			text-align: center; font-size: 28px; text-shadow: 2px 2px 3px #FF0000;
+			line-height: 45px;
+		}
+		#content {position: absolute; top: 50px; bottom: 0px;right: 0px; left: 0px;}
+		#nav {width: 180px; border-right: 2px solid #888;
+			position: absolute; top: 3px; bottom: 0px; background: #DDDDDD;
+		}
+		#active_table {position: absolute; top: 4px; left: 182px;
+			bottom: 0px; right: 0px;
+		}
+		#footer {position: absolute; bottom: 0px; width: 100%;
+			height: 10px; background: #DDDDDD;
+		}
+		#option {width: 180px; list-style: none; font-size: 18px; line-height: 40px;
+		}
+		li {margin-top: 13px; margin-left: -42px; width: 178px;
+			width: 178px; height: 41px; display: block;
+		}
+		.option_btn {letter-spacing: 2px; width: 181px;}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#table_id_example").dataTable();
+			$("#table_id_example").tableExport();
+			$("#option").children().click(function(){
+				alert($(this).index());
+			});
+		});
+	</script>
+</head>
+<body id="wrapper">
+	<div id="header">
+		订票管理页面
+	</div>
+	<div id="content">
+		<div id="nav">
+			<ul id="option">
+				<li id="li_0"><input class="option_btn" type="button" value="订票人数" /></li>
+				<li id="li_1"><input class="option_btn" type="button" value="增删改" /></li>
+				<li id="li_2"><input class="option_btn" type="button" value="历史表" /></li>
+				<li id="li_3"><input class="option_btn" type="button" value="表操作" /></li>
+				<li id="li_4"><input class="option_btn" type="button" value="管理员" /></li>
+			</ul>
+		</div>
+		<div id="box">
+		<!-- ============================-->
+			<div id="active_table" class="li_0">
+				<table id="table_id_example" class="display" style="width:100%;">
+				    <thead>
+				        <tr>
+				            <th>Column 1</th>
+				            <th>Column 2</th>
+				            <th>Column 2</th>
+				            <th>Column 2</th>
+				            <th>Column 2</th>
+				        </tr>
+				    </thead>
+				</table>
+			</div>
+		<!-- ============================-->
+			<div class="li_1">
+				<input type="button">
+					<div></div>
+				</input>
+				<input type="button">
+					<div></div>
+				</input>
+				<input type="button">
+					<div></div>
+				</input>
+			</div>
+		<!-- ============================-->
+		</div>
+	</div>
+	<div id="footer"></div>
+</body>
+</html>

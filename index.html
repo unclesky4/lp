@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>订票页面</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<script type="text/javascript" src="js/jquery-2.2.1.js"></script>
+	<style type="text/css">
+		#header {height: 100px; background:  #383838;
+			-khtml-opacity: 0.5; opacity: 0.5; margin-top: 0px;
+		}
+		#info {width: 800px; height: 100px; margin-left: 20%; color: #ffffff; font-size: 17px;
+		}
+		#wrapper {margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;
+		}
+		#main_content {width: 500px; height: 560px; overflow: hidden; border-radius: 3px;
+			margin: 0 auto;margin-top: 20px; background-color: rgb(247,247,247);
+			box-shadow: rgba(0, 0, 0, 0.3) 1px 2px 2px 1px;
+		}
+		.btn {width: 350px; height: 100px; background: rgb(48, 121, 237); margin: 65px auto; display: block; border-radius: 6px; text-align: center; font-size: 28px; letter-spacing: 3px;
+		}
+		#reg,#cancel,#status {width: 500px; height: 700px; margin: 20px auto; overflow: hidden;}
+		.property {width: 500px; height: 80px; margin-top:25px;}
+		#p {letter-spacing: 5px;width: 300px; height: 20px; font-size: 18px;}
+		select {width: 500px; height: 50px;  border: 1px solid #fff; margin-right: 0px;}
+		input {width: 496px; height: 40px; border:1px solid gray;}
+		#reg_btn,#abolish_btn,#check_btn {width: 500px; height: 45px; margin-top: 18px; border-radius: 6px; 
+			background-color: rgb(48, 121, 237); font-size: 18px; letter-spacing: 3px;
+		}
+		.goback {width: 200px;margin-left: 300px; color: blue; font-size: 18px; font-family:Tomes, Georia;}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#booking").click(function() {
+				$("#parents").children().hide();
+				$("#show_booking").show();
+			});
+			$("#abolish").click(function() {
+				$("#parents").children().hide();
+				$("#show_abolish").show();
+			});
+			$("#check").click(function() {
+				$("#parents").children().hide();
+				$("#show_check").show();
+			});
+			$(".goback").click(function() {
+				$("#parents").children().hide();
+				$("#main_content").show();
+			});
+		});
+	</script>
+</head>
+<body id="wrapper">
+	<div id="header">
+		<div id="info">
+			<p>描述:<span id="desc"></span></p>
+			<p>时间:<span id="time"></span></p>
+			<p>地点:<span id="addr"></span></p>
+		</div>
+	</div>
+	<div id="parents">
+		<div id="main_content">
+			<input id="booking" class="btn" type="button" value="立即订票" />
+			<input id="abolish" class="btn" type="button" value="取消订票" />
+			<input id="check" class="btn" type="button" value="查询是否已定票" />
+		</div>
+		<div id="show_booking" style="display:none">
+			<div id="reg">
+				<div class="property">
+					<p id="p">口令:</p>
+					<input id="reg_command" type="text" />
+				</div>
+				<div class="property">
+					<p id="p">学院:(必须点击一次)</p>
+					<select id="reg_select">
+					  <option value ="volvo">江北校区</option>
+					  <option value ="saab">梅师</option>
+					  <option value="opel">医学院</option>
+					  <option value="audi">江南校区</option>
+					</select>
+				</div>
+				<div class="property">
+					<p id="p">姓名:</p>
+					<input id="reg_name" type="text" />
+				</div>
+				<div class="property">
+					<p id="p">手机长号:</p>
+					<input id="reg_lphone" type="text" />
+				</div>
+				<div class="property">
+					<p id="p">手机短号:</p>
+					<input id="reg_sphone" type="text" />
+				</div>
+				<div class="property">
+					<input id="reg_btn" type="button" value="确认订票" />
+				</div>
+				<input class="goback" type="button" value="显示主页" />
+			</div>
+		</div>
+
+		<div id="show_abolish" style="display:none">
+			<div id="cancel">
+				<div class="property">
+					<p id="p">口令:</p>
+					<input id="abolish_command" type="text" />
+				</div>
+				<div class="property">
+					<p id="p">姓名:</p>
+					<input id="abolish_name" type="text" />
+				</div>
+				<div class="property">
+					<p id="p">手机长号:</p>
+					<input id="abolish_lphone" type="text" />
+				</div>
+				<div class="property">
+					<input id="abolish_btn" type="button" value="取消订票" />
+				</div>
+				<input class="goback" type="button" value="显示主页" />
+			</div>
+		</div>
+		<div id="show_check" style="display:none">
+			<div id="status">
+				<div class="property">
+					<p id="p">口令:</p>
+					<input id="check_command" type="text" />
+				</div>
+				<div class="property">
+					<p id="p">姓名:</p>
+					<input id="check_name" type="text" />
+				</div>
+				<div class="property">
+					<input id="check_btn" type="button" value="查询订票信息" />
+				</div>
+				<input class="goback" type="button" value="显示主页" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>
