@@ -9,6 +9,10 @@
 	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="js/file-saverjs.js"></script>
 	<script type="text/javascript" src="js/tableexport.js"></script>
+<!--	<script type="text/javascript" src="js/jquery.table2excel.min.js"></script> -->
+	<script type="text/javascript" src="js/jquery.base64.js"></script>
+	<script type="text/javascript" src="js/init.js"></script>
+	<script type="text/javascript" src="js/lp_main.js"></script>
 	<style type="text/css">
 		#wrapper {margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 0px;
 		}
@@ -26,7 +30,7 @@
 			bottom: 0px; right: 0px;
 		}
 		#footer {position: absolute; bottom: 0px; width: 100%;
-			height: 10px; background: #DDDDDD;
+			height: 25px; background: #DDDDDD; border-top: 1px solid #888; 
 		}
 		#option {width: 180px; list-style: none; font-size: 18px; line-height: 40px;
 		}
@@ -47,15 +51,13 @@
 		#update_select {height: 40px; border:1px solid black; width: 349px;}
 		#update_academy,#update_name,#update_lphone,#update_sphone,#delete_btn {width: 100px; height: 40px;}
 		#table_banner,#user_banner {height: 41px; border-bottom: 1px solid purple;}
-		#table_banner input {float: left; width: 120px; height: 40px; font-size: 18px;}
-		#table_content div {width: 400px; margin: 0px auto; font-size: 18px; margin-top: 150px;}
+		#table_banner input {width: 120px; height: 40px; font-size: 18px;}
+		#table_content div {width: 400px; margin: 0px auto; font-size: 18px; margin-top: 80px;}
 		#user_banner input {float: left; width: 120px; height: 40px; font-size: 18px;}
-		#user_content div {width: 400px; margin: 0px auto; font-size: 18px; margin-top: 100px;}
+		#add_user,#delete_user,#update_pwd {width: 400px; margin: 0px auto; font-size: 18px; margin-top: 100px;}
 	</style>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#reg_info").dataTable();
-			$("#reg_info").tableExport();
 			$("#option").children().click(function(){
 				var val = "."+$(this).attr("id");
 				$("#option").children().css("color","black");
@@ -70,7 +72,6 @@
 				$("#crud_content").children().eq(a).show();
 				$(this).css("color","#0033FF");
 			});
-			$("#table_info").dataTable();
 			$("#table_banner").children().click(function(){
 				var a = $(this).index();
 				$("#table_content").children().hide();
@@ -128,7 +129,7 @@
 				<div id="crud_content">
 					<div id="add">
 						<div class="property">
-							<p id="p">学院:(必须点击一次)</p>
+							<p id="p">学院:</p>
 							<select id="add_select" style="width: 400px; height: 40px;">
 							  <option value ="volvo">江北校区</option>
 							  <option value ="saab">梅师</option>
@@ -156,7 +157,7 @@
 					<div id="update" style="display:none;">
 						<div>
 							<span style="letter-spacing: 2px;">主键id:</span>
-							<input id="update_id" type="text" style="width: 429px;">
+							<input id="update_id" type="text" style="width: 429px;"  placeholder="请输入数字">
 						</div>
 						<div>
 							<span>学院:</span>
@@ -188,7 +189,7 @@
 					<div id="delete" style="display:none; font-size: 18px;">
 						<div>
 							<span style="letter-spacing: 2px;">主键id:</span>
-							<input id="delete_id" type="text" style="width: 200px; height: 40px">
+							<input id="delete_id" type="text" style="width: 200px; height: 40px" placeholder="请输入数字">
 							<input id="delete_btn" type="button" value="删除">
 						</div>
 					</div>
@@ -200,7 +201,9 @@
 				    <thead>
 				        <tr>
 				            <th>表名</th>
-				            <th>状态</th>
+				            <th>口令</th>
+				            <th>时间</th>
+				            <th>地点</th>
 				        </tr>
 				    </thead>
 				</table>
@@ -208,25 +211,46 @@
 		<!-- ============================-->
 			<div class="li_3" style="display:none;">
 				<div id="table_banner">
-					<input type="button" value="添加表" sstyle="color: #0033FF;">
+					<input type="button" value="添加表" style="color: blue;">
 					<input type="button" value="删除表">
-					<input type="button" value="设定活动表">
+					<input type="button" value="设定表">
 				</div>
 				<div id="table_content">
 					<div id="add_table">
 						<span>表名:</span>
-						<input id="add_table_input" type="text" style="width: 249px; height: 40px;">
-						<input id="add_table_btn" type="button" value="添加表" style="height: 40px;width: 100px;" />
+						<input id="add_table_input1" type="text" style="width: 400px; height: 40px;" placeholder="输入8位数字" />
+						<br/>
+						<br/>
+						<span>口令:</span>
+						<input id="add_table_input2" type="text" style="width: 400px; height: 40px;" />
+						<br/>
+						<br/>
+						<span>时间:</span>
+						<input id="add_table_input3" type="text" style="width: 400px; height: 40px;" placeholder="最大长度为20位"/>
+						<br/>
+						<br/>
+						<span>地点:</span>
+						<input id="add_table_input4" type="text" style="width: 400px; height: 40px;" placeholder="最大长度为20位" />
+						<br/>
+						<br/>
+						<input id="add_table_btn" type="button" value="添加表" style="height: 40px;width: 400px; letter-spacing: 8px;"/>
 					</div>
 					<div id="delete_table" style="display:none">
 						<span>表名:</span>
-						<input id="delete_table_input" type="text" style="width: 249px; height: 40px;">
+						<input id="delete_table_input" type="text" style="width: 249px; height: 40px;" />
 						<input id="delete_table_btn" type="button" value="删除表" style="height: 40px;width: 100px;" />
 					</div>
 					<div id="set_table" style="display:none">
 						<span>表名:</span>
 						<input id="set_table_input" type="text" style="height: 40px;width: 249px;">
-						<input id="set_table_btn" type="button" value="设为活动表" style="height: 40px;width: 100px;"/>
+						<input id="set_table_btn" type="button" value="设为活动表" style="height: 40px;width: 100px;"/><br/><br/>
+						<span>表名:</span>
+						<input id="remove_table_input" type="text" style="height: 40px;width: 249px;">
+						<input id="remove_table_btn" type="button" value="取消活动表" style="height: 40px;width: 100px;"/>
+						<br/>
+						<br/>
+						<br/>
+						<input id="show_at" type="button" value="查看活动表" style="width:400px; height: 40px;">
 					</div>
 				</div>
 			</div>
@@ -236,12 +260,17 @@
 					<input type="button" value="添加用户" style="color: blue;"/>
 					<input type="button" value="删除用户" />
 					<input type="button" value="修改密码" />
+					<input type="button" value="用户信息" />
 				</div>
 				<div id="user_content">
 					<div id="add_user">
-						<span>id:</span>
-						<input id="add_user_input" type="text" style="height: 40px;width: 270px;">
-						<input id="add_user_btn" type="button" value="添加用户" style="height: 40px;width: 100px;" />
+						<span>用户姓名：</span>
+						<input id="uname" type="text" style="height: 40px;width: 400px;" placeholder="字符，数字，下划线(最大长度为10位)">
+						<span>输入密码：</span>
+						<input id="pwd_1" type="password" style="height: 40px;width: 400px;">
+						<span>确认密码：</span>
+						<input id="pwd_2" type="password" style="height: 40px;width: 400px;"><br/><br/>
+						<input id="add_user_btn" type="button" value="添加用户" style="height: 40px;width: 400px;" />
 					</div>
 					<div id="delete_user" style="display:none">
 						<span>id:</span>
@@ -250,9 +279,20 @@
 					</div>
 					<div id="update_pwd" style="display:none">
 						<p style="text-indent: 150px;">修改当前用户密码</p><br/>
-						请输入新密码：<input id="pwd_input" type="text" style="height: 40px;width: 270px;"/><br/><br/>
-						再次输入密码：<input id="pwd_input_1" type="text" style="height: 40px;width: 270px;"/><br/><br/>
+						请输入新密码：<input id="pwd_input_1" type="password" style="height: 40px;width: 270px;"/><br/><br/>
+						再次输入密码：<input id="pwd_input_2" type="password" style="height: 40px;width: 270px;"/><br/><br/>
 						<input id="update_pwd_btn" type="button" value="修改密码" style="height: 40px;width: 400px;letter-spacing: 10px;" />
+					</div>
+					<div id="user_info" style="display:none">
+						<table id="show_user" class="display" style="width:100%;">
+						    <thead>
+						        <tr>
+						            <th>id</th>
+						            <th>name</th>
+						            <th>password</th>
+						        </tr>
+						    </thead>
+						</table>
 					</div>
 				</div>
 				
@@ -260,6 +300,9 @@
 		<!-- ============================-->
 		</div>
 	</div>
-	<div id="footer"></div>
+	<div id="footer">
+		<span id="login_user" style="margin-left: 10px;"></span>
+		<input id="logout" type="button" value="注销">
+	</div>
 </body>
 </html>

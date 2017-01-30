@@ -4,19 +4,22 @@
 	<title>订票页面</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<script type="text/javascript" src="js/jquery-2.2.1.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 	<style type="text/css">
-		#header {height: 100px; background:  #383838;
-			-khtml-opacity: 0.5; opacity: 0.5; margin-top: 0px;
-		}
-		#info {width: 800px; height: 100px; margin-left: 20%; color: #ffffff; font-size: 17px;
-		}
 		#wrapper {margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;
 		}
+		#header {height: 80px; background:  #C0C0C0;
+			-khtml-opacity: 0.5; opacity: 0.5; margin-top: -20px;
+		}
+		#info {width: 800px; height: 80px; margin-left: 20%; font-size: 20px;		
+		}
+		
 		#main_content {width: 500px; height: 560px; overflow: hidden; border-radius: 3px;
 			margin: 0 auto;margin-top: 20px; background-color: rgb(247,247,247);
 			box-shadow: rgba(0, 0, 0, 0.3) 1px 2px 2px 1px;
 		}
-		.btn {width: 350px; height: 100px; background: rgb(48, 121, 237); margin: 65px auto; display: block; border-radius: 6px; text-align: center; font-size: 28px; letter-spacing: 3px;
+		.btn {width: 350px; height: 100px; background: rgb(48, 121, 237); margin: 65px auto; display: block;
+			border-radius: 6px; text-align: center; font-size: 28px; letter-spacing: 3px;
 		}
 		#reg,#cancel,#status {width: 500px; height: 700px; margin: 20px auto; overflow: hidden;}
 		.property {width: 500px; height: 80px; margin-top:25px;}
@@ -52,7 +55,6 @@
 <body id="wrapper">
 	<div id="header">
 		<div id="info">
-			<p>描述:<span id="desc"></span></p>
 			<p>时间:<span id="time"></span></p>
 			<p>地点:<span id="addr"></span></p>
 		</div>
@@ -126,6 +128,10 @@
 				<div class="property">
 					<p id="p">姓名:</p>
 					<input id="check_name" type="text" />
+				</div>
+				<div class="property">
+					<p id="p">手机长号:</p>
+					<input id="check_lphone" type="text" />
 				</div>
 				<div class="property">
 					<input id="check_btn" type="button" value="查询订票信息" />
