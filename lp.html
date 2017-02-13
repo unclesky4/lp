@@ -3,6 +3,7 @@
 <head>
 	<title>ManageSystem</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="css/lp.css" />
 	<link rel="stylesheet" href="css/jquery.dataTables.min.css" />
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" />
@@ -21,7 +22,7 @@
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 	<!--<script type="text/javascript" src="js/jszip.min.js"></script>-->
 	<!--<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>-->
-	<script type="text/javascript" src="js/pdfmake.min.js"></script>
+	<script type="text/javascript" src="js/pdfmake.js"></script>
 	<!--<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>-->
 	<script type="text/javascript" src="js/vfs_fonts.js"></script>
 	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
@@ -29,49 +30,6 @@
 	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
 	<!--<script type="text/javascript" src="js/buttons.print.min.js"></script>-->
 
-	<style type="text/css">
-		#wrapper {margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 0px;
-		}
-		#header {height: 50px; border-bottom: 1px solid gray; box-shadow:
-			rgba(0,0,4,5) 0px 1px 2px 0px; background: #DDDDDD; letter-spacing: 10px;
-			text-align: center; font-size: 28px; text-shadow: 2px 2px 3px #FF0000;
-			line-height: 45px;
-		}
-		#content {position: absolute; top: 50px; bottom: 0px;right: 0px; left: 0px;
-		}
-		#nav {width: 180px; border-right: 2px solid #888;
-			position: absolute; top: 1px; bottom: 0px; background: #DDDDDD;
-		}
-		#active_table,.li_1,.li_2,.li_3,.li_4 {position: absolute; top: 2px; left: 182px;
-			bottom: 0px; right: 0px;
-		}
-		#footer {position: absolute; bottom: 0px; width: 100%;
-			height: 25px; background: #DDDDDD; border-top: 1px solid #888; 
-		}
-		#option {width: 180px; list-style: none; font-size: 18px; line-height: 40px;
-		}
-		li {margin-top: 13px; margin-left: -42px; width: 178px;
-			width: 178px; height: 41px; display: block;
-		}
-		.option_btn {letter-spacing: 2px; width: 181px;}
-		#crud_banner {height: 40px;}
-		#crud_banner input {width: 150px; height: 40px; font-size: 18px; letter-spacing: 2px;
-			}
-		#crud_content {border-top: 1px solid purple; font-size: 16px;}
-		#add,#update,#delete {width: 400px; margin: 0 auto; margin-top: 100px;}
-		.property {width: 400px; height: 80px;}
-		[id^=add_] {width: 400px; height: 40px;}
-		#update div {width: 500px; height: 40px; font-size: 18px;
-			margin-top: 20px;
-		}
-		#update_select {height: 40px; border:1px solid black; width: 349px;}
-		#update_academy,#update_name,#update_lphone,#update_sphone,#delete_btn {width: 100px; height: 40px;}
-		#table_banner,#user_banner {height: 41px; border-bottom: 1px solid purple;}
-		#table_banner input {width: 120px; height: 40px; font-size: 18px;}
-		#table_content div {width: 400px; margin: 0px auto; font-size: 18px; margin-top: 80px;}
-		#user_banner input {float: left; width: 120px; height: 40px; font-size: 18px;}
-		#add_user,#delete_user,#update_pwd {width: 400px; margin: 0px auto; font-size: 18px; margin-top: 100px;}
-	</style>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#option").children().click(function(){
