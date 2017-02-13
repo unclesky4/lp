@@ -8,17 +8,17 @@
 	<style type="text/css">
 		#wrapper {margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;
 		}
-		#header {height: 80px; background:  #C0C0C0;
+		#header {height: 80px; background:  #9966FF;
 			-khtml-opacity: 0.5; opacity: 0.5; margin-top: -20px;
 		}
-		#info {width: 800px; height: 80px; margin-left: 20%; font-size: 20px;		
+		#info {width: 800px; height: 80px; margin-left: 20%; font-size: 20px; color: #000000;		
 		}
 		
 		#main_content {width: 500px; height: 560px; overflow: hidden; border-radius: 3px;
 			margin: 0 auto;margin-top: 20px; background-color: rgb(247,247,247);
 			box-shadow: rgba(0, 0, 0, 0.3) 1px 2px 2px 1px;
 		}
-		.btn {width: 350px; height: 100px; background: rgb(48, 121, 237); margin: 65px auto; display: block;
+		.btn {width: 300px; height: 100px; background: rgb(48, 121, 237); margin: 30px auto; display: block;
 			border-radius: 6px; text-align: center; font-size: 28px; letter-spacing: 3px;
 		}
 		#reg,#cancel,#status {width: 500px; height: 700px; margin: 20px auto; overflow: hidden;}
@@ -49,6 +49,9 @@
 				$("#parents").children().hide();
 				$("#main_content").show();
 			});
+			$("#instruction").click(function() {
+				window.open("docs/readme.html");
+			});
 		});
 	</script>
 </head>
@@ -61,6 +64,7 @@
 	</div>
 	<div id="parents">
 		<div id="main_content">
+			<input id="instruction" class="btn" type="button" value="查看文档" />
 			<input id="booking" class="btn" type="button" value="立即订票" />
 			<input id="abolish" class="btn" type="button" value="取消订票" />
 			<input id="check" class="btn" type="button" value="查询是否已定票" />

@@ -37,10 +37,17 @@
 	}
 	$result = $conn->query("select * from `$tb` where `name`='$name' and `lphone`='$lphone'");
 	if($result->num_rows <1) {
-		echo "";
-	}else {
+		echo "未查到相关记录！";
+	}
+	if($result->num_rows == 1){
 		while($row = $result->fetch_assoc()) {
-			echo "姓名：".$row['name']."\t\t学院：".$row['academy']."\n手机长号：".$row['lphone']."\n手机短号：".$row['sphone']."\n订票时间：".$row['time'];		
+			if($row['status'] === "1"){
+				echo "您已订票成功!";
+			}else{
+				echo "姓名：".$row['name']."\n学院：".$row['academy']."\n手机长号：".$row['lphone']."\n手机短号：".$row['sphone']."\n订票时间：".$row['time'];		
+			}
 		}
+	}else{
+		echo "查到多条记录!";
 	}
 ?>

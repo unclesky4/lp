@@ -1,6 +1,7 @@
 <?php header('Content-type:text/html;charset=UTF-8');
 	session_start();
 	require "sql.php";
+	date_default_timezone_set("Asia/Shanghai");
 	$tb = "";
 	$Time = date("d-H:i:s");
 	//echo $Time;
@@ -30,6 +31,7 @@
 		echo "请输入6位手机短号!";
 		return ;
 	}
+
 	$conn->query("set names utf8");
 	$rs = $conn->query("select `name` from `at`");
 	if($rs->num_rows !== 1){
@@ -40,6 +42,13 @@
 		$tb = $row['name'];
 		//echo $tb;
 	}
+
+	$rs_1 = $conn->query("select `name`,`lphone` from `$tb` where `name`='$name' and `lphone`='$lphone'");
+	if($rs_1->num_rows > 0) {
+		echo "你已订票!";
+		return ;
+	}
+
 	$result = $conn->query("insert into `$tb`(academy,name,lphone,sphone,time) values ('$academy','$name','$lphone','$sphone','$Time')");
 	if($result){
 		echo "添加成功!";

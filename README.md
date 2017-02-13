@@ -22,11 +22,11 @@ Date:   Thu Jan 12 15:44:42 2017 +0800
 create table `user`(id int(6) primary key auto_increment, uname varchar(10) not null, password varchar(33) not null);
 
 create table `tb`(tname varchar(8) not null primary key, cmd varchar(8) not null, 
-	time varchar(20) null, addr varchar(20) null);
+	time varchar(20) not null, addr varchar(20) not null);
 
 create table `at`(name varchar(8) not null primary key, cmd varchar(8) not null, 
 	time varchar(20) null, addr varchar(20) null);
 
 create table `$tb`(id int(6) primary key  auto_increment,academy varchar(10) not null, name varchar(8) not null,
-	lphone varchar(11) not null, sphone varchar(6) not null, time varchar(12) not null);
+	lphone varchar(11) not null, sphone varchar(6) not null, time varchar(12) not null,status int(1) not null);
 

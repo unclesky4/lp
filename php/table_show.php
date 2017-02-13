@@ -39,8 +39,8 @@
 			$recordsTotal = $row['sum'];
 		}
 		
-		$sumSqlWhere = " where tname like '%".$search."%' and `cmd` like '%".$search."%' and `time` like '%".$search."%'";
-		$sumSqlWhere = $sumSqlWhere." and `addr` like '%".$search."%' ";
+		$sumSqlWhere = " where tname like '%".$search."%' or `cmd` like '%".$search."%' or `time` like '%".$search."%'";
+		$sumSqlWhere = $sumSqlWhere." or `addr` like '%".$search."%' ";
 		if(strlen($search)>0){
 			$rs = $conn->query($sumSql.$sumSqlWhere);
 	    	while ($row = $rs->fetch_assoc()) {

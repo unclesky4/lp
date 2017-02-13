@@ -5,14 +5,30 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<link rel="stylesheet" href="css/jquery.dataTables.min.css" />
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" />
+	<!-- <link rel="stylesheet" href="css/buttons.dataTables.min.css" /> -->
+
 	<script type="text/javascript" src="js/jquery-2.2.1.js"></script>
 	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="js/file-saverjs.js"></script>
-	<script type="text/javascript" src="js/tableexport.js"></script>
-<!--	<script type="text/javascript" src="js/jquery.table2excel.min.js"></script> -->
 	<script type="text/javascript" src="js/jquery.base64.js"></script>
 	<script type="text/javascript" src="js/init.js"></script>
 	<script type="text/javascript" src="js/lp_main.js"></script>
+
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+	<!--<script type="text/javascript" src="js/dataTables.buttons.min.js"></script>-->
+	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
+	<!--<script type="text/javascript" src="js/buttons.flash.min.js"></script>-->
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+	<!--<script type="text/javascript" src="js/jszip.min.js"></script>-->
+	<!--<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>-->
+	<script type="text/javascript" src="js/pdfmake.min.js"></script>
+	<!--<script type="text/javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>-->
+	<script type="text/javascript" src="js/vfs_fonts.js"></script>
+	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+	<!--<script type="text/javascript" src="js/buttons.html5.min.js"></script>-->
+	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+	<!--<script type="text/javascript" src="js/buttons.print.min.js"></script>-->
+
 	<style type="text/css">
 		#wrapper {margin-top: 0px; margin-left: 0px; margin-right: 0px; margin-bottom: 0px;
 		}
@@ -115,9 +131,13 @@
 				            <th>手机长号</th>
 				            <th>手机短号</th>
 				            <th>订票时间</th>
+				            <th>状态</th>
+				            <th>操作</th>
 				        </tr>
 				    </thead>
 				</table>
+				<input type="button" value="取消" id="no" style="float: right; margin-top: 20px;width: 80px;height: 40px;"/>
+				<input type="button" value="确认" id="yes" style="float: right; margin-top: 20px;width: 80px;height: 40px;"/>
 			</div>
 		<!-- ============================-->
 			<div class="li_1" style="display:none;">

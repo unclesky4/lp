@@ -1,6 +1,7 @@
 <?php header('Content-type:text/html;charset=UTF-8');
 	session_start();
 	require "sql.php";
+	date_default_timezone_set("Asia/Shanghai");
 	$tb = "";
 	$bool = false;
 	$Time = date("d-H:i:s");
@@ -28,6 +29,7 @@
 		echo "请输入6位手机短号!";
 		return ;
 	}
+	
 	$conn->query("set names utf8");
 	$rs = $conn->query("select `name`,`cmd` from `at`");
 	if($rs->num_rows !== 1){
@@ -46,10 +48,17 @@
 		echo "口令不正确！";
 		return ;	
 	}
-	$result = $conn->query("insert into `$tb`(academy,name,lphone,sphone,time) values ('$academy','$name','$lphone','$sphone','$Time')");
+
+	$rs_1 = $conn->query("select `name`,`lphone` from `$tb` where `name`='$name' and `lphone`='$lphone'");
+	if($rs_1->num_rows > 0) {
+		echo "你已预订票!";
+		return ;
+	}
+
+	$result = $conn->query("insert into `$tb`(academy,name,lphone,sphone,time,status) values ('$academy','$name','$lphone','$sphone','$Time',0)");
 	if($result){
-		echo "订票成功!";
+		echo "预订票成功!";
 	}else{
-		echo "订票失败!";
+		echo "预订票失败!";
 	}
 ?>

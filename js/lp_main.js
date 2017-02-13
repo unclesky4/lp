@@ -1,18 +1,74 @@
 $(document).ready(function(){
 	var z = /^\d{8}$/;
 
-	$("#reg_info").DataTable({   //显示订票信息
+	var tb = $("#reg_info").DataTable({   //显示订票信息
 		"processing": true,
 		"serverSide": true,
 		"ajax": {
 			"url": "php/show_person.php",
-			"type": "POST"
-		}
+			"type": "POST",
+		},
+		"dom": 'lBfrtip',
+        "buttons": [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        "columnDefs": [ {                //自动创建按钮
+        	"targets": -1,
+        	"data": null,
+        	"defaultContent": "<input type='checkbox' class='yn'>"
+        } ]
 	});
 
-	$("#reg_info").tableExport();	
+
+	$("#yes").click(function() {    //获取被选中的复选框--确认订票
+		var data = new Array();
+		$(".yn").each(function() {
+			if($(this).is(':checked')) {
+				var content = tb.row( $(this).parents('tr') ).data();
+				data.push(content[0]);
+			}
+		});
+		//alert(data);
+		if(data.length == 0) {
+			alert("没有数据!");
+			return;
+		}
+		$.ajax({
+			url: "php/confirm.php",
+			type: "POST",
+			async: false,
+			data: "action=1&data="+data,
+			success: function(rs) {
+				alert(rs);
+				tb.ajax.reload(null, false); // 刷新表格数据，分页信息不会重置
+			},
+		});
+	});
+	$("#no").click(function() {    //获取被选中的复选框--撤销已订票
+		var data = new Array();
+		$(".yn").each(function() {
+			if($(this).is(':checked')) {
+				var content = tb.row( $(this).parents('tr') ).data();
+				data.push(content[0]);
+			}
+		});
+		if(data.length == 0) {
+			alert("没有数据!");
+			return;
+		}
+		$.ajax({
+			url: "php/confirm.php",
+			type: "POST",
+			async: false,
+			data: "action=0&data="+data,
+			success: function(rs) {
+				alert(rs);
+				tb.ajax.reload(null, false); // 刷新表格数据，分页信息不会重置
+			},
+		});
+	});
 	
-	$("#table_info").DataTable({
+	var tb1 = $("#table_info").DataTable({
 		"processing": true,
 		"serverSide": true,
 		"ajax": {
@@ -20,6 +76,7 @@ $(document).ready(function(){
 			"type": "POST"
 		}
 	});
+
 
 	$("#add_btn").click(function(){   //添加记录
 		//var academy_1 = $("#add_select").val(); //获取select选中的 value
@@ -50,6 +107,8 @@ $(document).ready(function(){
 			data: "academy="+academy+"&name="+name+"&lphone="+lphone+"&sphone="+sphone,
 			success: function(result) {
 				alert(result);
+				tb.ajax.reload(null,false);
+				//tb.reset();
 			},
 			error: function(){
 				alert("error");
@@ -72,6 +131,7 @@ $(document).ready(function(){
 			data: "id="+id+"&academy="+academy,
 			success: function (result) {
 				alert(result);
+				tb.ajax.reload(null,false);
 			},
 			error: function () {
 				alert("error");			
@@ -100,6 +160,7 @@ $(document).ready(function(){
 			success: function (result) {
 				alert(result);
 				$("#input_name").val("");
+				tb.ajax.reload(null,false);
 			},
 			error: function () {
 				alert("error");			
@@ -128,6 +189,7 @@ $(document).ready(function(){
 			success: function (result) {
 				alert(result);
 				$("#input_lphone").val("");
+				tb.ajax.reload(null,false);
 			},
 			error: function () {
 				alert("error");			
@@ -156,6 +218,7 @@ $(document).ready(function(){
 			success: function (result) {
 				alert(result);
 				$("#input_sphone").val("");
+				tb.ajax.reload(null,false);
 			},
 			error: function () {
 				alert("error");			
@@ -179,6 +242,7 @@ $(document).ready(function(){
 			success: function(result) {
 				alert(result);
 				$("#delete_id").val("");
+				tb.ajax.reload(null,false);
 			},
 			error: function() {
 				alert("error");
@@ -221,6 +285,7 @@ $(document).ready(function(){
 				$("#add_table_input2").val("");
 				$("#add_table_input3").val("");
 				$("#add_table_input4").val("");
+				tb1.ajax.reload(null,false);
 			},
 			error: function(){
 				alert("error");
@@ -243,6 +308,7 @@ $(document).ready(function(){
 			success: function(result){
 				alert(result);
 				$("#delete_table_input").val("");
+				tb1.ajax.reload(null,false);
 			},
 			error: function(){
 				alert("error");
@@ -343,6 +409,7 @@ $(document).ready(function(){
 				$("#uname").val("");
 				$("#pwd_1").val("");
 				$("#pwd_2").val("");
+				tb2.ajax.reload(null,false);
 			},
 			error: function() {
 				alert("error");
@@ -365,6 +432,7 @@ $(document).ready(function(){
 			success: function(result) {
 				alert(result);
 				$("#delete_user_input").val("");
+				tb2.ajax.reload(null,false);
 			},
 			error: function(){
 				alert("error");
@@ -390,6 +458,7 @@ $(document).ready(function(){
 			data: "pwd="+ps1,
 			success: function(result){
 				alert(result);
+				tb2.ajax.reload(null,false);
 			},
 			error: function(){
 				alert("error");
@@ -397,7 +466,7 @@ $(document).ready(function(){
 		});
 	});
 
-	$("#show_user").DataTable({    //显示所有的管理员信息
+	var tb2 = $("#show_user").DataTable({    //显示所有的管理员信息
 		"processing": true,
 		"serverSide": true,
 		"ajax": {
