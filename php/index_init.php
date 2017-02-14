@@ -1,4 +1,4 @@
-<?php header('Content-type:text/html;charset=UTF-8');
+<?php header('Content-type:text/html;charset=UTF-8');  //前台显示的时间和地点
 	require "sql.php";
 	$conn->query("set names utf8");
 	$rs = $conn->query("select `time`,`addr` from `at`");
@@ -14,7 +14,6 @@
 		array_push($data,$obj);
 	}
 	echo json_encode(array(
-		"a"=>"a",
 		"data"=>$data
 	),JSON_UNESCAPED_UNICODE);
 ?>

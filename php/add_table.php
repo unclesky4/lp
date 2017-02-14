@@ -1,4 +1,4 @@
-<?php header('Content-type:text/html;charset=UTF-8');
+<?php header('Content-type:text/html;charset=UTF-8');  //后台调加表格
 	session_start();
 	require "sql.php";
 	$tname = test_input($_POST['Tname']);

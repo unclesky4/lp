@@ -1,4 +1,4 @@
-<?php header('Content-type:text/html;charset=UTF-8');
+<?php header('Content-type:text/html;charset=UTF-8');  //后台订票人数模块复选框--确认订票或者取消已订票
 	session_start();
 	require "sql.php";
 	$action = $_POST['action'];

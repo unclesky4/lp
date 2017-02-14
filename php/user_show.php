@@ -1,4 +1,4 @@
-<?php header('Content-type:text/html;charset=UTF-8');
+<?php header('Content-type:text/html;charset=UTF-8');   //显示用户（管理员）信息
 	session_start();
 	require "sql.php";
 	if(isset($_SESSION['USER'])){

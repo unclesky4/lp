@@ -1,4 +1,4 @@
-<?php header('Content-type:text/html;charset=UTF-8');
+<?php header('Content-type:text/html;charset=UTF-8');  //连接数据库
 $servername = "localhost";
 $username = "uncle";
 $password = "uncle";

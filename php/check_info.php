@@ -1,4 +1,4 @@
-<?php header('Content-type:text/html;charset=UTF-8');
+<?php header('Content-type:text/html;charset=UTF-8');  //前台老乡查询订票
 	session_start();
 	require "sql.php";
 	$tb = "";

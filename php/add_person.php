@@ -1,9 +1,9 @@
-<?php header('Content-type:text/html;charset=UTF-8');
+<?php header('Content-type:text/html;charset=UTF-8');   //后台添加订票记录
 	session_start();
 	require "sql.php";
-	date_default_timezone_set("Asia/Shanghai");
+	date_default_timezone_set("Asia/Shanghai");   //设定时区
 	$tb = "";
-	$Time = date("d-H:i:s");
+	$Time = date("m/d-H:i");
 	//echo $Time;
 
 	$academy = $_POST['academy'];

@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var tb = $("#reg_info").DataTable({   //显示订票信息
 		"processing": true,
 		"serverSide": true,
+		"lengthMenu": [20,40,70,110],  //自定义长度菜单的选项
 		"ajax": {
 			"url": "php/show_person.php",
 			"type": "POST",
@@ -18,7 +19,6 @@ $(document).ready(function(){
         	"defaultContent": "<input type='checkbox' class='yn'>"
         } ]
 	});
-
 
 	$("#yes").click(function() {    //获取被选中的复选框--确认订票
 		var data = new Array();
@@ -44,6 +44,7 @@ $(document).ready(function(){
 			},
 		});
 	});
+	
 	$("#no").click(function() {    //获取被选中的复选框--撤销已订票
 		var data = new Array();
 		$(".yn").each(function() {
@@ -68,7 +69,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	var tb1 = $("#table_info").DataTable({
+	var tb1 = $("#table_info").DataTable({  //显示历史表
 		"processing": true,
 		"serverSide": true,
 		"ajax": {

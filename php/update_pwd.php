@@ -1,4 +1,4 @@
-<?php header('Content-type:text/html;charset=UTF-8');
+<?php header('Content-type:text/html;charset=UTF-8');   //更改用户密码
 	session_start();
 	require "sql.php";
 	if(!isset($_SESSION['USER'])){

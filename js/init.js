@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$.ajax({
 		url: "php/init.php",
-		data: "aaa=aaa",
+		data: "a=a",
 		type: "POST",
 		success: function(result){
 			$("#login_user").html(result);
