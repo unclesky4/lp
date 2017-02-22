@@ -81,6 +81,7 @@ $(document).ready(function(){
 
 	$("#add_btn").click(function(){   //添加记录
 		//var academy_1 = $("#add_select").val(); //获取select选中的 value
+		var address = $("#add_address_select").find("option:selected").text();
 		var academy = $("#add_select").find("option:selected").text(); //获取select 选中的 text
 		//alert(academy+"-----" +academy_1);
 		var name = $("#add_name").val();
@@ -105,7 +106,7 @@ $(document).ready(function(){
 			url: "php/add_person.php",
 			type: "POST",
 			async: false,
-			data: "academy="+academy+"&name="+name+"&lphone="+lphone+"&sphone="+sphone,
+			data: "address="+address+"&academy="+academy+"&name="+name+"&lphone="+lphone+"&sphone="+sphone,
 			success: function(result) {
 				alert(result);
 				tb.ajax.reload(null,false);
@@ -113,6 +114,29 @@ $(document).ready(function(){
 			},
 			error: function(){
 				alert("error");
+			}
+		});
+	});
+
+	$("#update_address").click(function() {    //修改地点
+		var id = $("#update_id").val();
+		var academy = $("#address_select").find("option:selected").text();
+		var z = /^\d*$/;
+		if(!z.test(id) || id === "") {
+			alert("请正确输入id!");
+			return ;
+		}
+		$.ajax({
+			url: "php/Caddress.php",
+			type: "POST",
+			async: false,
+			data: "id="+id+"&address="+academy,
+			success: function (result) {
+				alert(result);
+				tb.ajax.reload(null,false);
+			},
+			error: function () {
+				alert("error");			
 			}
 		});
 	});
@@ -332,6 +356,7 @@ $(document).ready(function(){
 			success: function(result){
 				alert(result);
 				$("#set_table_input").val("");
+				tb.ajax.reload(null,false);
 			},
 			error: function(){
 				alert("error");

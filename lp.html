@@ -84,6 +84,7 @@
 				    <thead>
 				        <tr>
 				            <th>id</th>
+				            <th>地点</th>
 				            <th>学院</th>
 				            <th>姓名</th>
 				            <th>手机长号</th>
@@ -107,12 +108,19 @@
 				<div id="crud_content">
 					<div id="add">
 						<div class="property">
+							<p id="p">地点:</p>
+							<select id="add_address_select" style="width: 400px; height: 40px;">
+							  <option value ="连平" select="selected">连平</option>
+							  <option value ="忠信">忠信</option>
+							</select>
+						</div>
+						<div class="property">
 							<p id="p">学院:</p>
 							<select id="add_select" style="width: 400px; height: 40px;">
-							  <option value ="volvo">江北校区</option>
-							  <option value ="saab">梅师</option>
-							  <option value="opel">医学院</option>
-							  <option value="audi">江南校区</option>
+							  <option value ="江北校区" select="selected">江北校区</option>
+							  <option value ="梅师">梅师</option>
+							  <option value="医学院">医学院</option>
+							  <option value="江南校区">江南校区</option>
 							</select>
 						</div>
 						<div class="property">
@@ -138,12 +146,20 @@
 							<input id="update_id" type="text" style="width: 429px;"  placeholder="请输入数字">
 						</div>
 						<div>
+							<span>地点:</span>
+							<select id="address_select">
+							  <option value ="连平" select="selected">连平</option>
+							  <option value ="忠信">忠信</option>
+							</select>
+							<input id="update_address" type="button" value="修改">
+						</div>
+						<div>
 							<span>学院:</span>
 							<select id="update_select">
-							  <option value ="volvo">江北校区</option>
-							  <option value ="saab">梅师</option>
-							  <option value="opel">医学院</option>
-							  <option value="audi">江南校区</option>
+							  <option value ="江北校区" select="selected">江北校区</option>
+							  <option value ="梅师">梅师</option>
+							  <option value="医学院">医学院</option>
+							  <option value="江南校区">江南校区</option>
 							</select>
 							<input id="update_academy" type="button" value="修改">
 						</div>

@@ -32,8 +32,8 @@ li {margin-top: 13px; margin-left: -42px; width: 178px;
 #update div {width: 500px; height: 40px; font-size: 18px;
 	margin-top: 20px;
 }
-#update_select {height: 40px; border:1px solid black; width: 349px;}
-#update_academy,#update_name,#update_lphone,#update_sphone,#delete_btn {width: 100px; height: 40px;}
+#update_select,#address_select {height: 40px; border:1px solid black; width: 349px;}
+#update_address,#update_academy,#update_name,#update_lphone,#update_sphone,#delete_btn {width: 100px; height: 40px;}
 #table_banner,#user_banner {height: 41px; border-bottom: 1px solid purple;}
 #table_banner input {width: 120px; height: 40px; font-size: 18px;}
 #table_content div {width: 400px; margin: 0px auto; font-size: 18px; margin-top: 80px;}

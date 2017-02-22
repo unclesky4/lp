@@ -27,12 +27,13 @@
 		    $i = intval($order_column);
 		    switch($i){
 		        case 0: $orderSql = " order by `id` ".$order_dir; break;
-		        case 1: $orderSql = " order by `academy` ".$order_dir; break;
-		        case 2: $orderSql = " order by `name` ".$order_dir; break;
-		        case 3: $orderSql = " order by `lphone` ".$order_dir; break;
-		        case 4: $orderSql = " order by `sphone` ".$order_dir; break;
-		        case 5: $orderSql = " order by `time` ".$order_dir; break;
-		        case 6: $orderSql = " order by `status` ".$order_dir; break;
+		        case 1: $orderSql = " order by `address` ".$order_dir; break;
+		        case 2: $orderSql = " order by `academy` ".$order_dir; break;
+		        case 3: $orderSql = " order by `name` ".$order_dir; break;
+		        case 4: $orderSql = " order by `lphone` ".$order_dir; break;
+		        case 5: $orderSql = " order by `sphone` ".$order_dir; break;
+		        case 6: $orderSql = " order by `time` ".$order_dir; break;
+		        case 7: $orderSql = " order by `status` ".$order_dir; break;
 		        default: $orderSql = '';
 		    }
 		}
@@ -56,8 +57,8 @@
 			$recordsTotal = $row['sum'];
 		}
 		
-		$sumSqlWhere = " where `id` like '%".$search."%' or `academy` like '%".$search."%' or `name` like '%".$search."%' or `status` like '%".$search."%'";
-		$sumSqlWhere = $sumSqlWhere." or `lphone` like '%".$search."%' or `sphone` like '%".$search."%' or `time` like '%".$search."%'";
+		$sumSqlWhere = " where `id` like '%".$search."%' or `address` like '%".$search."%' or `academy` like '%".$search."%' or `name` like '%".$search."%' ";
+		$sumSqlWhere = $sumSqlWhere."or `status` like '%".$search."%' or `lphone` like '%".$search."%' or `sphone` like '%".$search."%' or `time` like '%".$search."%'";
 		if(strlen($search)>0){
 			$rs = $conn->query($sumSql.$sumSqlWhere);
 	    	while ($row = $rs->fetch_assoc()) {
@@ -74,14 +75,14 @@
 		    $sql = $totalResultSql.$sumSqlWhere.$orderSql.$limitSql;
 		    $dataResult = $conn->query($sql);
 		    while ($row = $dataResult->fetch_assoc()) {
-		        $obj = array($row['id'],$row['academy'],$row['name'],$row['lphone'],$row['sphone'],$row['time'],$row['status']);
+		        $obj = array($row['id'],$row['address'],$row['academy'],$row['name'],$row['lphone'],$row['sphone'],$row['time'],$row['status']);
 		        array_push($data, $obj);
 		    }
 		}else{
 		    //直接查询所有记录
 		    $dataResult = $conn->query($totalResultSql.$orderSql.$limitSql);
 		    while ($row = $dataResult->fetch_assoc()) {
-		        $obj = array($row['id'],$row['academy'],$row['name'],$row['lphone'],$row['sphone'],$row['time'],$row['status']);
+		        $obj = array($row['id'],$row['address'],$row['academy'],$row['name'],$row['lphone'],$row['sphone'],$row['time'],$row['status']);
 		        array_push($data,$obj);
 		    }
 		}

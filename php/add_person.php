@@ -6,6 +6,7 @@
 	$Time = date("m/d-H:i");
 	//echo $Time;
 
+	$address = $_POST['address'];
 	$academy = $_POST['academy'];
 	$name = $_POST['name'];
 	$lphone = $_POST['lphone'];
@@ -14,8 +15,12 @@
 		echo "请登陆！";
 		return ;
 	}
+	if($academy == '' || $address == '') {
+		echo "学院 or 地点未选择!";
+		return ;
+	}
 	if(!preg_match("/^[\x80-\xff]*$/",$academy)) {
-		echo $academy;
+		//echo $academy;
 		echo "学院类型不正确!";
 		return ;
 	}

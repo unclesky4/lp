@@ -20,6 +20,7 @@ $(document).ready(function () {
 	$("#reg_btn").click(function () {   //订票
 		var cmd = $("#reg_command").val();
 		var academy = $("#reg_select").find("option:selected").text(); //获取select 选中的 text
+		var address = $("#reg_select_addr").find("option:selected").text();
 		var name = $("#reg_name").val();
 		var lphone = $("#reg_lphone").val();
 		var sphone = $("#reg_sphone").val();
@@ -48,7 +49,7 @@ $(document).ready(function () {
 			url: "php/reg.php",
 			type: "POST",
 			async: false,
-			data: "cmd="+cmd+"&academy="+academy+"&name="+name+"&lphone="+lphone+"&sphone="+sphone,
+			data: "cmd="+cmd+"&academy="+academy+"&name="+name+"&lphone="+lphone+"&sphone="+sphone+"&address="+address,
 			success: function(result) {
 				alert(result);
 				$("#reg_name").val("");

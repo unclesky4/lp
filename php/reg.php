@@ -12,6 +12,7 @@
 	$name = $_POST['name'];
 	$lphone = $_POST['lphone'];
 	$sphone = $_POST['sphone'];
+	$address = $_POST['address'];
 	
 	$conn->query("set names utf8");
 	$rs = $conn->query("select `name`,`cmd` from `at`");
@@ -56,7 +57,7 @@
 		return ;
 	}
 
-	$result = $conn->query("insert into `$tb`(academy,name,lphone,sphone,time,status) values ('$academy','$name','$lphone','$sphone','$Time',0)");
+	$result = $conn->query("insert into `$tb`(address,academy,name,lphone,sphone,time,status) values ('$address','$academy','$name','$lphone','$sphone','$Time',0)");
 	if($result){
 		echo "预订票成功!";
 	}else{

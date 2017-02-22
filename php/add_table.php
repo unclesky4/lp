@@ -23,7 +23,7 @@
 	}
 	if($username === $_SESSION['USER']){
 		$sql1 = "insert into `tb`(`tname`,`cmd`,`time`,`addr`) values ('$tname','$cmd','$Time','$addr')";
-		$sql2 = "create table `$tname`(id int primary key auto_increment,academy varchar(10) not null,";
+		$sql2 = "create table `$tname`(id int primary key auto_increment,address varchar(4) null,academy varchar(10) not null,";
 		$sql2 = $sql2."name varchar(8) not null,lphone varchar(11) not null,sphone varchar(11) not null,time varchar(12) not null,status int(1) not null)";
 		$conn->autocommit(false);
 		$rs1 = $conn->query($sql1);

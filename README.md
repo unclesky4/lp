@@ -27,6 +27,6 @@ create table `tb`(tname varchar(8) not null primary key, cmd varchar(8) not null
 create table `at`(name varchar(8) not null primary key, cmd varchar(8) not null, 
 	time varchar(20) null, addr varchar(20) null);
 
-create table `$tb`(id int(6) primary key  auto_increment,academy varchar(10) not null, name varchar(8) not null,
+create table `$tb`(id int(6) primary key  auto_increment,address varchar(4) not null, academy varchar(10) not null, name varchar(8) not null,
 	lphone varchar(11) not null, sphone varchar(6) not null, time varchar(12) not null,status int(1) not null);
 
