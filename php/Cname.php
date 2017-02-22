@@ -31,6 +31,12 @@
 		$tb = $row['name'];
 	}
 
+	$rs_id = $conn->query("select `status` from `$tb` where `id`=$id");
+	if($rs_id->num_rows <= 0){
+		echo "id不存在!";
+		return ;
+	}
+
 	//echo "update `$tb` set `academy`='$academy' where `id`='$id'";
 	$result = $conn->query("update `$tb` set `name`='$name' where `id`='$id'");
 	if($result){

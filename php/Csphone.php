@@ -19,7 +19,6 @@
 		echo "请输入6位手机短号!";
 		return ;
 	}
-
 	$conn->query("set names utf8");
 	$rs = $conn->query("select `name` from `at`");
 	if($rs->num_rows !== 1){
@@ -28,6 +27,12 @@
 	}
 	while($row = $rs->fetch_assoc()) {
 		$tb = $row['name'];
+	}
+
+	$rs_id = $conn->query("select `status` from `$tb` where `id`=$id");
+	if($rs_id->num_rows <= 0){
+		echo "id不存在!";
+		return ;
 	}
 
 	//echo "update `$tb` set `academy`='$academy' where `id`='$id'";
