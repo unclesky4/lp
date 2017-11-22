@@ -1,0 +1,111 @@
+-- MySQL dump 10.14  Distrib 5.5.52-MariaDB, for Linux (x86_64)
+--
+-- Host: localhost    Database: lp
+-- ------------------------------------------------------
+-- Server version	5.5.52-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `lp`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `lp` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `lp`;
+
+--
+-- Table structure for table `at`
+--
+
+DROP TABLE IF EXISTS `at`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `at` (
+  `name` varchar(8) NOT NULL,
+  `cmd` varchar(8) NOT NULL,
+  `time` varchar(20) DEFAULT NULL,
+  `addr` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `at`
+--
+
+LOCK TABLES `at` WRITE;
+/*!40000 ALTER TABLE `at` DISABLE KEYS */;
+INSERT INTO `at` VALUES ('20100202','2l5n','20170202','ssssssssssss');
+/*!40000 ALTER TABLE `at` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb`
+--
+
+DROP TABLE IF EXISTS `tb`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb` (
+  `tname` varchar(8) NOT NULL,
+  `cmd` varchar(8) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `addr` varchar(20) NOT NULL,
+  PRIMARY KEY (`tname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb`
+--
+
+LOCK TABLES `tb` WRITE;
+/*!40000 ALTER TABLE `tb` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `uname` varchar(10) NOT NULL,
+  `password` varchar(33) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (2,'uncle','ca2640de146fbaf4fcadc17d05031dc8'),(3,'biao','3a094daa7827feacb2bb246ab6b4b065');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-11-22 21:30:34
